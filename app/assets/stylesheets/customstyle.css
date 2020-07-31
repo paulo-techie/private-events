@@ -1,0 +1,13 @@
+.signup-form {
+  display: flex;
+  margin: 0 auto;
+  width: 25%;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  padding-bottom: 10px;
+}
+
+button {
+  border: none;
+}
