@@ -1,7 +1,9 @@
 
+<h2 class="header">New User SignUp form</h2>
 
-<form action="<%= users_path %>" method="POST" class="signup-form bg-primary">
-  <label for="name">name</label> <br>
+<form accept-charset="UTF-8" action="<%= users_path %>" data-remote="true" method="post" class="signup-form bg-primary">
+  <input name="authenticity_token" type="hidden" value="J7CBxfHalt49OSHp27hblqK20c9PgwJ108nDHX/8Cts=" />
+  <label for="name" class="name-label">Enter you name:</label> <br>
   <input type="text" name="name" id="" placeholder="John Smith"> <br>
-  <button type="submit">Submit</button>
+  <button type="submit">SignUp</button>
 </form>

@@ -1,3 +1,7 @@
+.header {
+  text-align: center;
+}
+
 .signup-form {
   display: flex;
   margin: 0 auto;
@@ -5,7 +9,12 @@
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
-  padding-bottom: 10px;
+  padding: 10px 0 10px 0;
+}
+
+.name-label {
+  font: 20px bold;
+  color: white;
 }
 
 button {
