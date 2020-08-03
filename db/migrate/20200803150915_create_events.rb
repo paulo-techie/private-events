@@ -8,6 +8,7 @@ class CreateEvents < ActiveRecord::Migration[6.0]
 
     change_table :events do |t|
       t.datetime :time
+      t.references :creator
     end
   end
 end
