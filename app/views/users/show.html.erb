@@ -1,3 +1,6 @@
-<p class="">
-  <%= @user.name %>
-</p>
+<div class="">
+  <h3>Welcome to your profile</h3>
+  <p class="info-body">Your Name: <span class="info-detail"><%= @user.name %></span></p>
+  <p class="info-body">Your Email: <span class="info-detail"><%= @user.email %></span></p>
+  <p class="info-body">Your ID is: <span class="info-detail info-id "><%= session[:user_id] %></span></p> 
+</div>

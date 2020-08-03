@@ -1,0 +1,23 @@
+
+<h2 class="header">New User SignIn form</h2>
+
+
+
+  <% if flash[:login_errors] %>
+    <div class="errors"></div>
+      <ul>
+        <% flash[:login_errors].each do |error| %>
+          <li class="error-message"><%= error %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<form accept-charset="UTF-8" action="/login" data-remote="true" method="post" class="signup-form bg-primary">
+  <input name="authenticity_token" type="hidden" value="J7CBxfHalt49OSHp27hblqK20c9PgwJ108nDHX/8Cts=" />
+
+  <label for="" class="label">SignIn with your name:</label> <br>
+  <input type="text" name="id" id="" placeholder="Your Name"> <br>
+  <button type="submit">SignIn</button>
+</form>

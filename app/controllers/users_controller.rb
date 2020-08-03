@@ -5,11 +5,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(name: params[:name])
-
+    @user = User.new(name: params[:name], email:params[:email])
+    
     if @user.save
-      redirect_to new_user_path
+      session[:user_id] = @user.id
+      redirect_to user_path(@user.id)
     else
+      flash[:registration_errors] = @user.errors.full_messages
       render :new
     end
   end
