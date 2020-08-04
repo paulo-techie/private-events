@@ -11,7 +11,8 @@
   <p class="info-body">Your Name: <span class="info-detail"><%= @user.name %></span></p>
   <p class="info-body">Your Email: <span class="info-detail"><%= @user.email %></span></p>
   <p class="info-body">Your ID is: <span class="info-detail info-id "><%= session[:user_id] %></span> <small class="text-danger">Remember to login with your ID</small></p>
-  <a href= "<%= logout_path %>">Logout Here</a>
+  <a href= "<%= logout_path %>" class="text-danger">Logout Here</a>
+  <a href= "<%= login_path %>" class="text-primary ml-4">Signin as another user</a>
 </div>
 
 
