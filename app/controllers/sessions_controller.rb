@@ -9,10 +9,16 @@ class SessionsController < ApplicationController
     if @user
       session[:user_id] = @user.id
       # redirect_to user_path(@user.id)
+      flash[:login_success] = ["You are sucessfully logged in"]
       redirect_to (@user)
     else
       flash[:login_errors] = ["Wrong login"]
       redirect_to login_path
     end
+  end
+
+  def destroy
+    session[:user_id] = nil
+    redirect_to login_path
   end
 end

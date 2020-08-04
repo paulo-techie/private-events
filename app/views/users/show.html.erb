@@ -1,6 +1,29 @@
+<% if flash[:login_success] %>
+  <% flash[:login_success].each do |success| %>
+    <div class="alert alert-success">
+      <%= success %>
+    </div>
+  <% end %>
+<% end %>
+
 <div class="">
   <h3>Welcome to your profile</h3>
   <p class="info-body">Your Name: <span class="info-detail"><%= @user.name %></span></p>
   <p class="info-body">Your Email: <span class="info-detail"><%= @user.email %></span></p>
-  <p class="info-body">Your ID is: <span class="info-detail info-id "><%= session[:user_id] %></span></p> 
+  <p class="info-body">Your ID is: <span class="info-detail info-id "><%= session[:user_id] %></span> <small class="text-danger">Remember to login with your ID</small></p>
+  <a href= "<%= logout_path %>">Logout Here</a>
+</div>
+
+
+<div class="card" style="width: 18rem;">
+  <div class="card-header bg-info text-white">
+    Created Events
+  </div>
+  <% if @created_events %>
+    <ul class="list-group list-group-flush">
+      <% @created_events.each do |event| %>
+        <li class="list-group-item bg-warning"><%= event.title %></li>
+      <% end %>
+    </ul>
+  <% end %>
 </div>
