@@ -1,5 +1,20 @@
 <p id="notice"><%= notice %></p>
 
 <p>Event Title: <%= @event.title %></p>
+<div class="mb-3">Description: <br> <%= @event.description %> </div>
+
 <p>Creator: <%= @event.creator.name %></p>
 <%= link_to 'Back', events_path %>
+
+<div class="card" style="width: 18rem;">
+  <div class="card-header bg-info text-white">
+    Attendees
+  </div>
+  <% if @event.attendees %>
+    <ul class="list-group list-group-flush">
+      <% @event.attendees.each do |attendee| %>
+        <li class="list-group-item bg-warning"><%= attendee.name %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
