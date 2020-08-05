@@ -10,14 +10,19 @@
       </ul>
     </div>
   <% end %>
-  
+
   <div class="field">
-    <%= form.label :title %>
+    <label for="title">Event Title </label> <br>
     <%= form.text_field :title %>
   </div>
 
   <div class="field">
-    <%= form.label :time %>
+    <label for="description">Event Description </label> <br>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :time %> <br>
     <%= form.datetime_local_field :time %>
   </div>
   

@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2020_08_03_150915) do
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "time"
     t.integer "creator_id"
+    t.text "description"
     t.index ["creator_id"], name: "index_events_on_creator_id"
   end
 
