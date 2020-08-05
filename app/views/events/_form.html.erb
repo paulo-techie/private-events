@@ -10,6 +10,17 @@
       </ul>
     </div>
   <% end %>
+  
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :time %>
+    <%= form.datetime_local_field :time %>
+  </div>
+  
 
   <div class="actions">
     <%= form.submit %>
