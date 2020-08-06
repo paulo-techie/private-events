@@ -7,8 +7,9 @@ Built-with: Ruby on Rails
 * Run `bundle install` to install the necessary ruby gems
 * Run `rails server` to start-up the application in the browser on the http://localhost:3000 where you can interact with the application
 
-This project was built based on the instructions at [Odin Project](https://www.theodinproject.com/courses/ruby-on-rails/lessons/associations)
-Rails app using associations between users - (creator and attendee) and events tables.
+This project was built based on the instructions at [Odin Project](https://www.theodinproject.com/courses/ruby-on-rails/lessons/associations).
+
+This Rails app uses associations between users - (creators and attendees) and events tables to allow users perform a range of tasks just link Eventbrite
 
 With this application, users can:
 1. Sign up and Log in to their accounts
