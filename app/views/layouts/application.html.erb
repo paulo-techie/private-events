@@ -28,6 +28,29 @@
       <% end %>
     <% end %>
 
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <% if current_user %>
+      <p class="navbar-brand disabled m-0 p-0" href="/"><%= current_user.name %></p>
+    <% else %>
+      <p class="navbar-brand disabled m-0 p-0" href="/">Login/Signup</p>
+    <% end %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <% if current_user %>
+            <a class="nav-link active" href="/logout">Logout</a>
+            <a class="nav-link active" href="<%= user_path(current_user) %>">Dashboard</a>
+            <a class="nav-link active" href="<%= new_event_path %>">Create Event</a>
+          <% end %>
+          <a class="nav-link active" href="/events">All Events</a>
+          <a class="nav-link active" href="/login">Login</a>
+          <a class="nav-link active" href="/signup">Signup</a>
+        </div>
+      </div>
+    </nav>
     <%= yield %>
 
     
