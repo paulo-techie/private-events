@@ -5,10 +5,10 @@ class ApplicationController < ActionController::Base
   private
 
   def user_signedin
-    if session[:user_id].nil?
-      flash[:errors] = ["You must signin to gain user access"]
-      redirect_to login_path
-    end
+    return unless session[:user_id].nil?
+
+    flash[:errors] = ['You must signin to gain user access']
+    redirect_to login_path
   end
 
   def current_user

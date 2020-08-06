@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_action :user_signedin, only: [:new, :create]
+  before_action :set_event, only: %i[show edit update destroy]
+  before_action :user_signedin, only: %i[new create]
 
   # GET /events
   # GET /events.json
@@ -12,8 +12,7 @@ class EventsController < ApplicationController
 
   # GET /events/1
   # GET /events/1.json
-  def show
-  end
+  def show; end
 
   # GET /events/new
   def new
@@ -27,7 +26,7 @@ class EventsController < ApplicationController
 
     if @event.save
       redirect_to @event
-      flash[:success] = ["Event was successfully created"]
+      flash[:success] = ['Event was successfully created']
     else
       render :new
     end
@@ -37,17 +36,15 @@ class EventsController < ApplicationController
     user_id = session[:user_id]
     event_id = params[:id]
 
-    unless user_id.nil?
-      unless user_attended_event?(user_id, event_id)
-        @attendance = EventAttendance.create(attendee_id: user_id, attended_event_id: event_id)
-        redirect_to events_path
-      else
-        flash[:errors] = ["Well, you are already attending this event"]
-        redirect_to event_path(event_id)
-      end
-    else
-      flash[:errors] = ["You need to login to attend this event"]
+    if user_id.nil?
+      flash[:errors] = ['You need to login to attend this event']
       redirect_to event_path(event_id)
+    elsif user_attended_event?(user_id, event_id)
+      flash[:errors] = ['Well, you are already attending this event']
+      redirect_to event_path(event_id)
+    else
+      @attendance = EventAttendance.create(attendee_id: user_id, attended_event_id: event_id)
+      redirect_to events_path
     end
   end
 
