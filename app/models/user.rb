@@ -3,4 +3,12 @@ class User < ApplicationRecord
 
   has_many :event_attendances, foreign_key: :attendee_id
   has_many :attended_events, through: :event_attendances
+
+  def previous_events
+    created_events.where("time < ?", Time.now)
+  end
+
+  def upcoming_events
+     created_events.where("time >= ?", Time.now)
+  end
 end
