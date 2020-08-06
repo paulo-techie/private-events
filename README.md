@@ -9,19 +9,13 @@ Built-with: Ruby on Rails
 
 This project was built based on the instructions at [Odin Project](https://www.theodinproject.com/courses/ruby-on-rails/lessons/associations).
 
-This Rails app uses associations between users - (creators and attendees) and events tables to allow users perform a range of tasks just link Eventbrite
+This Rails app uses associations between users - (creators and attendees) and events' tables to allow users perform a range of tasks just like Eventbrite
 
 With this application, users can:
 1. Sign up and Log in to their accounts
 2. Create, view and attend events
-3. See upcoming events in the future and events in the past on their dashboard and on the events index page.
+3. See upcoming events in the future and events in the past on their dashboard and on the events' index page.
 
-Technical details:
-We designed how to structure our model relationships and associations
-We generated a new rails app from the command line.
-We generated models and filled-out migrations
-We ran the migrations to create tables
-We added validations to the models
 
 
 ## Authors
