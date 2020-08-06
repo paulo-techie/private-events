@@ -1,15 +1,5 @@
 
 <h2 class="header">New User SignIn form</h2>
-<!-- <p><%= session[:user_id].nil? %></p> -->
-
-
-<% if flash[:login_errors] %>
-  <% flash[:login_errors].each do |error| %>
-    <div class="alert alert-danger">
-      <%= error %>
-    </div>
-  <% end %>
-<% end %>
 
 
 <form accept-charset="UTF-8" action="/login" data-remote="true" method="post" class="signup-form bg-primary">

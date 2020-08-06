@@ -1,0 +1,34 @@
+<div class="container-sm">
+  <div class="row">
+    <div class="col-6">
+      <div class="card" style="width: 18rem;">
+        <div class="card-header bg-danger text-white">
+          Previous Events
+        </div>
+        <% if prev_events %>
+          <ul class="list-group list-group-flush">
+            <% prev_events.each do |event| %>
+              <li class="list-group-item bg-warning"><%= event.title %></li>
+              <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Missed</a>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="card" style="width: 18rem;">
+        <div class="card-header bg-primary text-white">
+          Upcoming Events
+        </div>
+        <% if upcoming_events %>
+          <ul class="list-group list-group-flush">
+            <% upcoming_events.each do |event| %>
+              <li class="list-group-item bg-info text-white"><%= event.title %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

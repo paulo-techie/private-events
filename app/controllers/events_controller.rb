@@ -6,6 +6,8 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = Event.all
+    @past = Event.past
+    @upcoming = Event.upcoming
   end
 
   # GET /events/1
@@ -18,10 +20,6 @@ class EventsController < ApplicationController
     @event = current_user.created_events.build
   end
 
-  # GET /events/1/edit
-  def edit
-  end
-
   # POST /events
   # POST /events.json
   def create
@@ -29,38 +27,13 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
-        format.json { render :show, status: :created, location: @event }
+        format.html { redirect_to @event, success: 'Event was successfully created.' }
       else
         format.html { render :new }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /events/1
-  # PATCH/PUT /events/1.json
-  def update
-    respond_to do |format|
-      if @event.update(event_params)
-        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
-        format.json { render :show, status: :ok, location: @event }
-      else
-        format.html { render :edit }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /events/1
-  # DELETE /events/1.json
-  def destroy
-    @event.destroy
-    respond_to do |format|
-      format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
 
   def attend
     user_id = session[:user_id]
@@ -71,11 +44,11 @@ class EventsController < ApplicationController
         @attendance = EventAttendance.create(attendee_id: user_id, attended_event_id: event_id)
         redirect_to event_path(event_id)
       else
-        flash[:attendance_errors] = ["Well, you are already attending this event"]
+        flash[:errors] = ["Well, you are already attending this event"]
         redirect_to event_path(event_id)
       end
     else
-      flash[:attendance_errors] = ["You need to login to attend this event"]
+      flash[:errors] = ["You need to login to attend this event"]
       redirect_to event_path(event_id)
     end
   end

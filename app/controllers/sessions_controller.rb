@@ -8,10 +8,10 @@ class SessionsController < ApplicationController
     @user = User.find_by_id(params[:id])
     if @user
       session[:user_id] = @user.id
-      flash[:login_success] = ["You are sucessfully logged in"]
+      flash[:success] = ["You are sucessfully logged in"]
       redirect_to (@user)
     else
-      flash[:login_errors] = ["Wrong login"]
+      flash[:errors] = ["Wrong login"]
       redirect_to login_path
     end
   end
