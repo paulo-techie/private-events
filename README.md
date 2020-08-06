@@ -1,24 +1,43 @@
-# README
+# EventBrite Project (Private Events)
+Built-with: Ruby on Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Set-Up instructions
+* Setup Ruby and Ruby-on-Rails on your computer
+* Clone this repository by running `git clone https://github.com/paulo-techie/private-events.git` and cd into the directory
+* Run `bundle install` to install the necessary ruby gems
+* Run `rails server` to start-up the application in the browser on the http://localhost:3000 where you can interact with the application
 
-Things you may want to cover:
+This project was built based on the instructions at [Odin Project](https://www.theodinproject.com/courses/ruby-on-rails/lessons/associations)
+Rails app using associations between users - (creator and attendee) and events tables.
 
-* Ruby version
+With this application, users can:
+1. Sign up and Log in to their accounts
+2. Create, view and attend events
+3. See upcoming events in the future and events in the past on their dashboard and on the events index page.
 
-* System dependencies
+Technical details:
+We designed how to structure our model relationships and associations
+We generated a new rails app from the command line.
+We generated models and filled-out migrations
+We ran the migrations to create tables
+We added validations to the models
 
-* Configuration
 
-* Database creation
+## Authors
 
-* Database initialization
+👤 **Paul Omondi**
 
-* How to run the test suite
+- Github: [@paulo-techie](https://github.com/paulo-techie)
+- Email: [email me](mailto:paulo.techie@gmail.com)
 
-* Services (job queues, cache servers, search engines, etc.)
+👤 **Smith Nkereuwem**
 
-* Deployment instructions
+- Github: [@SmithVyne](https://github.com/SmithVyne)
+- Twitter: [@SmithVyne](https://twitter.com/SmithVyne)
+- Email: [email me](mailto:smithnkereuwem2@gmail.com)
 
-* ...
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
