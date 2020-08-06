@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :user_signedin, only: [:show]
   helper_method :user_attended_event?, :current_user
-  
+
   private
 
   def user_signedin

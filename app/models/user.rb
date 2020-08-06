@@ -9,6 +9,6 @@ class User < ApplicationRecord
   end
 
   def upcoming_events
-     created_events.where("time >= ?", Time.now)
+    created_events.where("time >= ?", Time.now)
   end
 end

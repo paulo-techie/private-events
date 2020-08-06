@@ -1,12 +1,11 @@
 class UsersController < ApplicationController
-
   def new
     @user = User.new
   end
 
   def create
-    @user = User.new(name: params[:name], email:params[:email])
-    
+    @user = User.new(name: params[:name], email: params[:email])
+
     if @user.save
       session[:user_id] = @user.id
       flash[:success] = ["Sucessfully Signed Up"]
@@ -24,5 +23,4 @@ class UsersController < ApplicationController
       @upcoming_events = current_user.upcoming_events
     end
   end
-
 end

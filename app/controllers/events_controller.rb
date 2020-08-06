@@ -25,19 +25,18 @@ class EventsController < ApplicationController
   def create
     @event = current_user.created_events.build(event_params)
 
-      if @event.save
-        redirect_to @event
-        flash[:success] = ["Event was successfully created"]
-      else
-        render :new
-      end
+    if @event.save
+      redirect_to @event
+      flash[:success] = ["Event was successfully created"]
+    else
+      render :new
+    end
   end
-
 
   def attend
     user_id = session[:user_id]
     event_id = params[:id]
-    
+
     unless user_id.nil?
       unless user_attended_event?(user_id, event_id)
         @attendance = EventAttendance.create(attendee_id: user_id, attended_event_id: event_id)
@@ -53,14 +52,14 @@ class EventsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_event
-      @event = Event.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def event_params
-      params.require(:event).permit(:title, :time, :description)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_event
+    @event = Event.find(params[:id])
+  end
 
+  # Only allow a list of trusted parameters through.
+  def event_params
+    params.require(:event).permit(:title, :time, :description)
+  end
 end
