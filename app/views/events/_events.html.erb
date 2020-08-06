@@ -8,8 +8,15 @@
         <% if prev_events %>
           <ul class="list-group list-group-flush">
             <% prev_events.each do |event| %>
-              <li class="list-group-item bg-warning"><%= event.title %></li>
-              <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Missed</a>
+              <li class="list-group-item bg-warning">
+                <%= event.title %> <br>
+
+                <a href="<%= event_path(event) %>" class="badge badge-light">Show Event</a>
+                <% if  user_attended_event?(session[:user_id], event.id) %>
+                  <span class="badge badge-light">You attended</span>
+                <% end %>
+                
+              </li>
             <% end %>
           </ul>
         <% end %>
@@ -24,7 +31,17 @@
         <% if upcoming_events %>
           <ul class="list-group list-group-flush">
             <% upcoming_events.each do |event| %>
-              <li class="list-group-item bg-info text-white"><%= event.title %></li>
+              <li class="list-group-item bg-info text-white">
+                <%= event.title %> <br>
+
+                <a href="<%= event_path(event) %>" class="badge badge-light">Show Event</a>
+                <% unless user_attended_event?(session[:user_id], event.id) %>
+                  <a href="/events/<%= event.id %>/attend" class="badge badge-danger text-white">Attend this event</a>
+                <% else %>
+                  <span class="badge badge-light">You're attending</span>
+                <% end %>
+
+              </li>
             <% end %>
           </ul>
         <% end %>

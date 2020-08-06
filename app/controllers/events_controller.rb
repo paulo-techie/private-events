@@ -25,13 +25,12 @@ class EventsController < ApplicationController
   def create
     @event = current_user.created_events.build(event_params)
 
-    respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, success: 'Event was successfully created.' }
+        redirect_to @event
+        flash[:success] = ["Event was successfully created"]
       else
-        format.html { render :new }
+        render :new
       end
-    end
   end
 
 
@@ -42,7 +41,7 @@ class EventsController < ApplicationController
     unless user_id.nil?
       unless user_attended_event?(user_id, event_id)
         @attendance = EventAttendance.create(attendee_id: user_id, attended_event_id: event_id)
-        redirect_to event_path(event_id)
+        redirect_to events_path
       else
         flash[:errors] = ["Well, you are already attending this event"]
         redirect_to event_path(event_id)
@@ -64,8 +63,4 @@ class EventsController < ApplicationController
       params.require(:event).permit(:title, :time, :description)
     end
 
-    def user_attended_event?(user_id, event_id)
-      @attended = EventAttendance.find_by(attendee_id: user_id, attended_event_id: event_id)
-      @attended ? true : false
-    end
 end
