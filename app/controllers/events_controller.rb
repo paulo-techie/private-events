@@ -62,6 +62,24 @@ class EventsController < ApplicationController
     end
   end
 
+  def attend
+    user_id = session[:user_id]
+    event_id = params[:id]
+    
+    unless user_id.nil?
+      unless user_attended_event?(user_id, event_id)
+        @attendance = EventAttendance.create(attendee_id: user_id, attended_event_id: event_id)
+        redirect_to event_path(event_id)
+      else
+        flash[:attendance_errors] = ["Well, you are already attending this event"]
+        redirect_to event_path(event_id)
+      end
+    else
+      flash[:attendance_errors] = ["You need to login to attend this event"]
+      redirect_to event_path(event_id)
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_event
@@ -71,5 +89,10 @@ class EventsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def event_params
       params.require(:event).permit(:title, :time, :description)
+    end
+
+    def user_attended_event?(user_id, event_id)
+      @attended = EventAttendance.find_by(attendee_id: user_id, attended_event_id: event_id)
+      @attended ? true : false
     end
 end

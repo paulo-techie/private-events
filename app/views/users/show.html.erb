@@ -15,16 +15,38 @@
   <a href= "<%= login_path %>" class="text-primary ml-4">Signin as another user</a>
 </div>
 
+<div class="container-sm">
+  <div class="row">
+    <div class="col-6">
+      <div class="card" style="width: 18rem;">
+        <div class="card-header bg-danger text-white">
+          Previous Events
+        </div>
+        <% if @prev_events %>
+          <ul class="list-group list-group-flush">
+            <% @prev_events.each do |event| %>
+              <li class="list-group-item bg-warning"><%= event.title %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+    </div>
 
-<div class="card" style="width: 18rem;">
-  <div class="card-header bg-info text-white">
-    Created Events
+    <div class="col-6">
+      <div class="card" style="width: 18rem;">
+        <div class="card-header bg-primary text-white">
+          Upcoming Events
+        </div>
+        <% if @upcoming_events %>
+          <ul class="list-group list-group-flush">
+            <% @upcoming_events.each do |event| %>
+              <li class="list-group-item bg-info text-white"><%= event.title %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <% if @created_events %>
-    <ul class="list-group list-group-flush">
-      <% @created_events.each do |event| %>
-        <li class="list-group-item bg-warning"><%= event.title %></li>
-      <% end %>
-    </ul>
-  <% end %>
 </div>
+
+

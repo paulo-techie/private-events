@@ -1,7 +1,14 @@
-<p id="notice"><%= notice %></p>
+<% if flash[:attendance_errors] %>
+  <%flash[:attendance_errors].each do |error| %>
+    <div class="alert alert-danger">
+      <%= error %>
+    </div>
+  <% end %>
+<% end %>
 
 <p>Event Title: <%= @event.title %></p>
 <div class="mb-3">Description: <br> <%= @event.description %> </div>
+<a href="/events/<%= @event.id %>/attend">Attend Event</a>
 
 <p>Creator: <%= @event.creator.name %></p>
 <%= link_to 'Back', events_path %>

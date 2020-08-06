@@ -10,4 +10,6 @@ Rails.application.routes.draw do  resources :events
   post 'login' => 'sessions#create'
 
   get 'logout' => 'sessions#destroy'
+
+  get 'events/:id/attend' => 'events#attend'
 end

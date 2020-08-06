@@ -8,7 +8,6 @@ class SessionsController < ApplicationController
     @user = User.find_by_id(params[:id])
     if @user
       session[:user_id] = @user.id
-      # redirect_to user_path(@user.id)
       flash[:login_success] = ["You are sucessfully logged in"]
       redirect_to (@user)
     else
