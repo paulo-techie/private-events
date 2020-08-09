@@ -20,6 +20,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     return if @user.created_events.nil?
 
+    @created_events = @user.created_events
     @prev_events = current_user.previous_events
     @upcoming_events = current_user.upcoming_events
   end
