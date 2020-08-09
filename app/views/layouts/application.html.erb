@@ -44,10 +44,11 @@
             <a class="nav-link active" href="/logout">Logout</a>
             <a class="nav-link active" href="<%= user_path(current_user) %>">Dashboard</a>
             <a class="nav-link active" href="<%= new_event_path %>">Create Event</a>
+          <% else %>
+            <a class="nav-link active" href="/login">Login</a>
+            <a class="nav-link active" href="/signup">Signup</a>
           <% end %>
-          <a class="nav-link active" href="/events">All Events</a>
-          <a class="nav-link active" href="/login">Login</a>
-          <a class="nav-link active" href="/signup">Signup</a>
+            <a class="nav-link active" href="/events">All Events</a>
         </div>
       </div>
     </nav>

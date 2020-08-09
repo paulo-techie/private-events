@@ -4,8 +4,23 @@
   <p class="info-body">Your Name: <span class="info-detail"><%= @user.name %></span></p>
   <p class="info-body">Your Email: <span class="info-detail"><%= @user.email %></span></p>
   <p class="info-body">Your ID is: <span class="info-detail info-id "><%= session[:user_id] %></span> <small class="text-danger">Remember to login with your ID</small></p>
-  <a href= "<%= logout_path %>" class="text-danger">Logout Here</a>
-  <a href= "<%= login_path %>" class="text-primary ml-4">Signin as another user</a>
+  <a href= "<%= login_path %>" class="text-primary">Signin as another user</a>
+</div>
+
+<div class="card" style="width: 18rem;">
+  <div class="card-header bg-primary text-white">
+    Created Events
+  </div>
+  <% if @created_events %>
+    <ul class="list-group list-group-flush">
+      <% @created_events.each do |event| %>
+        <li class="list-group-item bg-info text-white">
+          <%= event.title %> <br>
+          <a href="<%= event_path(event) %>" class="badge badge-light">Show Event</a>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
 </div>
 
 <%= render 'events/events', prev_events: @prev_events, upcoming_events: @upcoming_events %>
