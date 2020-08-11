@@ -1,0 +1,13 @@
+
+<p>Event Title: <%= @event.title %></p>
+<div class="mb-3">Description: <br> <%= @event.description %> </div>
+<% unless user_attended_event?(session[:user_id], @event.id) %>
+  <a href="/events/<%= @event.id %>/attend" class="badge badge-danger text-white">Attend this event</a>
+<% else %>
+  <span class="badge badge-light">You are attending this event</span>
+<% end %>
+
+<p>Creator: <%= @event.creator.name %></p>
+<%= link_to 'Back', events_path %>
+
+<%= render 'attendees', event: @event %>

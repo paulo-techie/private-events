@@ -1,0 +1,15 @@
+class CreateEvents < ActiveRecord::Migration[6.0]
+  def change
+    create_table :events do |t|
+      t.string :title
+      
+      t.timestamps
+    end
+
+    change_table :events do |t|
+      t.datetime :time
+      t.references :creator
+      t.text :description
+    end
+  end
+end
